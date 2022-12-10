@@ -1,0 +1,73 @@
+/* defined variables */
+:root {
+  --txt: hwb(0 100% 0%);
+  --deco: hsl(240, 22%, 25%);
+}
+
+/* includes the h1 element */
+header {
+  width: 100%;
+  text-align: center;
+  background-color: var(--deco);
+  color: var(--txt);
+  padding: 25px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+main {
+  padding: 25px;
+
+}
+.card-header {
+  background-color: var(--deco);
+  color: var(--txt);
+  font-size: 20px;
+}
+
+.list-subtitle {
+  font-size: 13px;
+  opacity: 75%;
+}
+
+.btn {
+  background-color: var(--deco);
+  color: var(--txt);
+  border: none;
+  margin: 10px;
+}
+
+.modal-header {
+  background-color: var(--deco);
+  color: var(--txt);
+}
+
+.modal-title {
+  font-size: 18px;
+}
+
+.btn-secondary {
+  background-color: var(--txt);
+  color: var(--deco);
+  border: 1px solid;
+}
+
+.ui-datepicker th {
+  background-color: var(--deco);
+}
+
+thead {
+  background-color: rgb(217, 75, 24);
+  color: var(--txt);
+}
+
+.deleteProject {
+  background-color: none;
+  border: none;
+}
