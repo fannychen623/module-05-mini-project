@@ -27,31 +27,39 @@ function displayRecords() {
       +"<td>"+(recordedDueDate[i])+"</td>"
       +"<td><button class='deleteProject'>x</button></td>"
       +"</tr>";
-    $(projectItem).appendTo($("tbody"));
+    $(projectItem).appendTo($('tbody'));
   };
 };
 
-$('tbody').on('click', '.deleteProject', removeItem);
-
-function removeItem(event) {
-  var btnClicked = $(event.target);
-  btnClicked.parent('tr').remove();
-}
-
-$('#addProject').on('click', function () {
-  recordedProjectName.push($('input[id="projectName"]').val());
-  recordedProjectType.push($('select[id="projectType"] :selected').text()); 
-  recordedDueDate.push($('input[id="datepicker"]').val());
-
+$('tbody').on("click", "tr", ".deleteProject", function() {
+  var index = $(this).index();
+  recordedProjectName.splice(index,1);
+  recordedProjectType.splice(index,1);
+  recordedDueDate.splice(index,1);
   localStorage.setItem("recordedProjectName", JSON.stringify(recordedProjectName));
   localStorage.setItem("recordedProjectType", JSON.stringify(recordedProjectType));
   localStorage.setItem("recordedDueDate", JSON.stringify(recordedDueDate));
+  $(this).closest("tr").remove();
+});
 
-  displayRecords();
+$('#addProject').on('click', function () {
+  if ($('input').val() !== "" && $('select :selected').text() !== "" ) {
+    recordedProjectName.push($('input[id="projectName"]').val());
+    recordedProjectType.push($('select[id="projectType"] :selected').text()); 
+    recordedDueDate.push($('input[id="datepicker"]').val());
 
-  $('input').val('');
-  $('select').val('');
-  $('#projectModal').modal('hide');
+    localStorage.setItem("recordedProjectName", JSON.stringify(recordedProjectName));
+    localStorage.setItem("recordedProjectType", JSON.stringify(recordedProjectType));
+    localStorage.setItem("recordedDueDate", JSON.stringify(recordedDueDate));
+
+    displayRecords();
+
+    $('input').val('');
+    $('select').val('');
+    $('#projectModal').modal('hide');
+  } else {
+    alert("Must fill in all values.");
+  }
 });
 
 function init() {
